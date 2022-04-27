@@ -14,7 +14,6 @@
   "homepage": "https://github.com/wataru-chocola/remark-extended-table/tree/main/packages/remark-extended-table",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "type": "module",
   "files": [
     "lib/*.js",
     "lib/*.d.ts",
@@ -48,7 +47,7 @@
     "lint": "eslint ./**/*.{ts}",
     "lint-fix": "eslint --fix ./**/*.{ts} && prettier --write ./**/*.{ts,json}",
     "test": "npm run build && NODE_OPTIONS=--experimental-vm-modules jest 'test\\.js' --testPathIgnorePatterns=\"/node_modules/\"",
-    "build": "tsc --build --verbose",
+    "build": "tsc --build --verbose && echo \"export * from './lib/index';\" | npx esbuild --bundle --format=cjs > lib/index.js",
     "rebuild": "npm run clean && npm run build",
     "prepublish": "npm run rebuild",
     "clean": "rimraf lib/*{.js,.d.ts}"
