@@ -98,9 +98,8 @@ export const extendedTableFromMarkdown = (options?: extendedTableFromMarkdownOpt
             if (j >= row.children.length - 1) {
               marker2text(cell);
             } else {
-              row.children[j + 1].colspan =
-                (row.children[j + 1].colspan || 1) + (cell.colspan || 1);
-              toBeDeleted.push([i, j]);
+              cell.colspan = (row.children[j + 1].colspan || 1) + 1;
+              toBeDeleted.push([i, j + 1]);
             }
             break;
 
